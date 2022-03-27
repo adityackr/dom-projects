@@ -1,13 +1,18 @@
-const root = document.getElementById('root');
-const output = document.getElementById('output');
-const btnChange = document.getElementById('btn-change');
-const heading = document.querySelector('h1');
+window.onload = () => {
+	main();
+};
 
-btnChange.addEventListener('click', function () {
-	let bgColor = getRandomHexColor();
-	root.style.backgroundColor = bgColor;
-	output.value = bgColor;
-});
+function main() {
+	const root = document.getElementById('root');
+	const output = document.getElementById('output');
+	const btnChange = document.getElementById('btn-change');
+
+	btnChange.addEventListener('click', function () {
+		let bgColor = getRandomHexColor();
+		root.style.backgroundColor = bgColor;
+		output.value = bgColor;
+	});
+}
 
 function getRandomHexColor() {
 	const red = Math.floor(Math.random() * 255);
