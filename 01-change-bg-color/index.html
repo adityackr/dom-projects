@@ -11,8 +11,13 @@
 	<body>
 		<div class="container" id="root">
 			<h1>Change The Background Color By Clicking Following Button</h1>
-			<input type="text" disabled value="#000000" id="output" />
-			<button id="btn-change">Change Color</button>
+			<div class="input-group">
+				<input type="text" disabled value="#000000" id="output" />
+				<button class="btn-copy" id="btn-copy" title="copy to clipboard">
+					Copy
+				</button>
+			</div>
+			<button class="btn-change" id="btn-change">Change Color</button>
 		</div>
 	</body>
 </html>
