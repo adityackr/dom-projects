@@ -6,11 +6,16 @@ function main() {
 	const root = document.getElementById('root');
 	const output = document.getElementById('output');
 	const btnChange = document.getElementById('btn-change');
+	const btnCopy = document.getElementById('btn-copy');
 
 	btnChange.addEventListener('click', function () {
 		let bgColor = getRandomHexColor();
 		root.style.backgroundColor = bgColor;
 		output.value = bgColor;
+	});
+
+	btnCopy.addEventListener('click', function () {
+		navigator.clipboard.writeText(output.value);
 	});
 }
 
