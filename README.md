@@ -1,4 +1,4 @@
-# dom-projects
+# JavaScript DOM Projects
 
 ### Live links
   1. [Change Background Color - Live Link](https://adityackr.github.io/dom-projects/01-change-bg-color/)
