@@ -12,12 +12,22 @@
 	outline: none;
 }
 
+.accordion::after {
+	content: '\002B';
+	float: right;
+}
+
+.active::after {
+	content: '\2212';
+}
+
 .accordion:hover .active {
 	background-color: #ccc;
 }
 
 .panel {
 	overflow: hidden;
-	padding: 1rem 0;
-	display: none;
+	padding: 0 1rem;
+	max-height: 0;
+	transition: max-height 0.2s ease-out;
 }
