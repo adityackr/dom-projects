@@ -17,12 +17,23 @@ function main() {
 	});
 
 	btnCopy.addEventListener('click', function () {
-		navigator.clipboard.writeText(output.value);
 		if (div !== null) {
 			div.remove();
 			div = null;
 		}
-		generateToastMsg(`${output.value} copied!`);
+		if (isValidHex(output.value)) {
+			navigator.clipboard.writeText(output.value);
+			generateToastMsg(`${output.value} copied!`);
+		} else {
+			alert('Invalid Color Code! Please enter a correct color code.');
+		}
+	});
+
+	output.addEventListener('keyup', function (e) {
+		color = e.target.value;
+		if (color && isValidHex(color)) {
+			root.style.backgroundColor = color;
+		}
 	});
 }
 
@@ -50,4 +61,15 @@ function generateToastMsg(msg) {
 	});
 
 	document.body.appendChild(div);
+}
+
+/**
+ *
+ * @param {string} color
+ */
+function isValidHex(color) {
+	if (color.length !== 7 || color[0] !== '#') return false;
+
+	color = color.substring(1);
+	return /^[0-9A-Fa-f]{6}$/i.test(color);
 }
