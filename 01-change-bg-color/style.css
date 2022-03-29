@@ -23,6 +23,33 @@ body {
 	align-items: center;
 }
 
+.input-group {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	position: relative;
+	/* overflow: hidden; */
+}
+
+.input-icon {
+	position: absolute;
+	top: 1rem;
+	padding: 0.43rem;
+	background-color: #ddd;
+	color: #424242;
+	border-top-left-radius: 0.25rem;
+	border-bottom-left-radius: 0.25rem;
+}
+
+.output {
+	margin-left: 1rem;
+}
+
+.output:focus {
+	outline: none;
+	border: none;
+}
+
 input[type='text'],
 input[type='text']:disabled,
 .btn-copy {

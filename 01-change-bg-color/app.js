@@ -13,7 +13,7 @@ function main() {
 	btnChange.addEventListener('click', function () {
 		let bgColor = getRandomHexColor();
 		root.style.backgroundColor = bgColor;
-		output.value = bgColor;
+		output.value = bgColor.substring(1);
 	});
 
 	btnCopy.addEventListener('click', function () {
@@ -23,7 +23,7 @@ function main() {
 		}
 		if (isValidHex(output.value)) {
 			navigator.clipboard.writeText(output.value);
-			generateToastMsg(`${output.value} copied!`);
+			generateToastMsg(`#${output.value} copied!`);
 		} else {
 			alert('Invalid Color Code! Please enter a correct color code.');
 		}
@@ -31,8 +31,11 @@ function main() {
 
 	output.addEventListener('keyup', function (e) {
 		color = e.target.value;
-		if (color && isValidHex(color)) {
-			root.style.backgroundColor = color;
+		if (color) {
+			output.value = color.toUpperCase();
+			if (isValidHex(color)) {
+				root.style.backgroundColor = `#${color}`;
+			}
 		}
 	});
 }
@@ -68,8 +71,6 @@ function generateToastMsg(msg) {
  * @param {string} color
  */
 function isValidHex(color) {
-	if (color.length !== 7 || color[0] !== '#') return false;
-
-	color = color.substring(1);
+	if (color.length !== 6) return false;
 	return /^[0-9A-Fa-f]{6}$/i.test(color);
 }
