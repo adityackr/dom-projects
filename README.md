@@ -11,3 +11,4 @@
 | [Expanding Cards](https://adityackr.github.io/dom-projects/05-expanding-cards/)                   | [Source Code](https://github.com/adityackr/dom-projects/tree/main/05-expanding-cards)     |
 | [Progress Steps](https://adityackr.github.io/dom-projects/06-progress-steps/)                     | [Source Code](https://github.com/adityackr/dom-projects/tree/main/06-progress-steps)      |
 | [Rotating Navigation Animation](https://adityackr.github.io/dom-projects/07-rotating-navigation/) | [Source Code](https://github.com/adityackr/dom-projects/tree/main/07-rotating-navigation) |
+| [Hidden Search](https://adityackr.github.io/dom-projects/08-hidden-search/)                       | [Source Code](https://github.com/adityackr/dom-projects/tree/main/08-hidden-search)       |
