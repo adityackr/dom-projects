@@ -13,4 +13,4 @@
 | [Rotating Navigation Animation](https://adityackr.github.io/dom-projects/07-rotating-navigation/) | [Source Code](https://github.com/adityackr/dom-projects/tree/main/07-rotating-navigation) |
 | [Hidden Search](https://adityackr.github.io/dom-projects/08-hidden-search/)                       | [Source Code](https://github.com/adityackr/dom-projects/tree/main/08-hidden-search)       |
 | [Blurry Loading](https://adityackr.github.io/dom-projects/09-blurry-loading/)                     | [Source Code](https://github.com/adityackr/dom-projects/tree/main/09-blurry-loading)      |
-| [Blurry Loading](https://adityackr.github.io/dom-projects/10-scroll-animation/)                   | [Source Code](https://github.com/adityackr/dom-projects/tree/main/10-scroll-animation)    |
+| [Scroll Animation](https://adityackr.github.io/dom-projects/10-scroll-animation/)                 | [Source Code](https://github.com/adityackr/dom-projects/tree/main/10-scroll-animation)    |
