@@ -14,4 +14,4 @@
 | [Hidden Search](https://adityackr.github.io/dom-projects/08-hidden-search/)                       | [Source Code](https://github.com/adityackr/dom-projects/tree/main/08-hidden-search)       |
 | [Blurry Loading](https://adityackr.github.io/dom-projects/09-blurry-loading/)                     | [Source Code](https://github.com/adityackr/dom-projects/tree/main/09-blurry-loading)      |
 | [Scroll Animation](https://adityackr.github.io/dom-projects/10-scroll-animation/)                 | [Source Code](https://github.com/adityackr/dom-projects/tree/main/10-scroll-animation)    |
-| [Split Landing Page](https://adityackr.github.io/dom-projects/11-split-landing-page/)             | [Source Code](https://github.com/adityackr/dom-projects/tree/main/11-split-landing-page)  |
+| [Form Input Wave](https://adityackr.github.io/dom-projects/12-form-input-wave/)                   | [Source Code](https://github.com/adityackr/dom-projects/tree/main/12-form-input-wave)     |
