@@ -16,3 +16,4 @@
 | [Scroll Animation](https://adityackr.github.io/dom-projects/10-scroll-animation/)                 | [Source Code](https://github.com/adityackr/dom-projects/tree/main/10-scroll-animation)    |
 | [Split Landing Page](https://adityackr.github.io/dom-projects/11-split-landing-page/)             | [Source Code](https://github.com/adityackr/dom-projects/tree/main/11-split-landing-page)  |
 | [Form Input Wave](https://adityackr.github.io/dom-projects/12-form-input-wave/)                   | [Source Code](https://github.com/adityackr/dom-projects/tree/main/12-form-input-wave)     |
+| [Sound Board](https://adityackr.github.io/dom-projects/13-sound-board/)                           | [Source Code](https://github.com/adityackr/dom-projects/tree/main/13-sound-board)         |
