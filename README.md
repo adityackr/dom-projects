@@ -19,3 +19,4 @@
 | [Sound Board](https://adityackr.github.io/dom-projects/13-sound-board/)                           | [Source Code](https://github.com/adityackr/dom-projects/tree/main/13-sound-board)         |
 | [Dad Jokes](https://adityackr.github.io/dom-projects/14-dad-jokes/)                               | [Source Code](https://github.com/adityackr/dom-projects/tree/main/14-dad-jokes)           |
 | [Event KeyCodes](https://adityackr.github.io/dom-projects/15-event-keycodes/)                     | [Source Code](https://github.com/adityackr/dom-projects/tree/main/15-event-keycodes)      |
+| [FAQ Collapse](https://adityackr.github.io/dom-projects/16-faq-collapse/)                         | [Source Code](https://github.com/adityackr/dom-projects/tree/main/16-faq-collapse)        |
