@@ -21,4 +21,4 @@
 | [Event KeyCodes](https://adityackr.github.io/dom-projects/15-event-keycodes/)                     | [Source Code](https://github.com/adityackr/dom-projects/tree/main/15-event-keycodes)       |
 | [FAQ Collapse](https://adityackr.github.io/dom-projects/16-faq-collapse/)                         | [Source Code](https://github.com/adityackr/dom-projects/tree/main/16-faq-collapse)         |
 | [Random Choice Picker](https://adityackr.github.io/dom-projects/17-random-choice-picker/)         | [Source Code](https://github.com/adityackr/dom-projects/tree/main/17-random-choice-picker) |
-| [Animated Navigation](https://adityackr.github.io/dom-projects/18-animated-navigation/)           | [Source Code](https://github.com/adityackr/dom-projects/tree/main/18-animated-navigation)  |
+| [Increment Counter](https://adityackr.github.io/dom-projects/19-incrementing-counter/)            | [Source Code](https://github.com/adityackr/dom-projects/tree/main/19-incrementing-counter) |
