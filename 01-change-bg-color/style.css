@@ -23,6 +23,18 @@ body {
 	align-items: center;
 }
 
+.label-group {
+	display: flex;
+	justify-content: flex-start;
+	margin-top: 1rem;
+}
+
+.label-group label {
+	color: #fff;
+	text-shadow: 1px 1px 0 #333, -1px -1px 0 #333, 1px -1px 0 #333,
+		-1px 1px 0 #333, 2px 2px 5px rgba(0, 0, 0, 0.65);
+}
+
 .input-group {
 	display: flex;
 	align-items: center;
@@ -34,7 +46,7 @@ body {
 .input-icon {
 	position: absolute;
 	top: 1rem;
-	padding: 0.43rem;
+	padding: 0.41rem;
 	background-color: #ddd;
 	color: #424242;
 	border-top-left-radius: 0.25rem;
