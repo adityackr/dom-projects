@@ -1,24 +1,18 @@
 /**
- * Project Requirements:
- * - Change the background color by generating random hex color by clicking a button
- * - Also display the hex code to a disabled input field
- * - Add a button to copy the color code
- * - Add a toast message when copied
- * - User can type their own hex code too
- * - show rgb color too, but do not need to edit it
- * - user can also copy the rgb color code
+ * Date: 25-05-2022
+ * Author: Aditya Chakraborty
+ * Description: Color picker refactoring with huge DOM functionalities
  */
 
-// Steps
-
 // Globals
-
 let div = null;
 
+// onload function
 window.onload = () => {
 	main();
 };
 
+// main or boot function, this function will take care of getting all dom references
 function main() {
 	const root = document.getElementById('root');
 	const output = document.getElementById('output');
@@ -74,49 +68,9 @@ function main() {
 	});
 }
 
-// function 1 - generate three random decimal number for red, green and blue
-// return as a object
+// event handlers
 
-function generateColorDecimal() {
-	const red = Math.floor(Math.random() * 255);
-	const green = Math.floor(Math.random() * 255);
-	const blue = Math.floor(Math.random() * 255);
-
-	return {
-		red,
-		green,
-		blue,
-	};
-}
-
-// function 2 - generate hex color code
-function generateHexColor({ red, green, blue }) {
-	const getTwoCode = (value) => {
-		const hex = value.toString(16);
-		return hex.length === 1 ? `0${hex}` : hex;
-	};
-	return `#${getTwoCode(red)}${getTwoCode(green)}${getTwoCode(
-		blue
-	)}`.toUpperCase();
-}
-
-// function 3 - generate rgb color code
-function generateRGBColor({ red, green, blue }) {
-	return `rgb(${red}, ${green}, ${blue})`;
-}
-
-/**
- * convert hex color to rgb
- * @param {string} hex
- */
-
-function hexToRgb(hex) {
-	const red = parseInt(hex.slice(0, 2), 16);
-	const green = parseInt(hex.slice(2, 4), 16);
-	const blue = parseInt(hex.slice(4), 16);
-
-	return `rgb(${red}, ${green}, ${blue})`;
-}
+// DOM functions
 
 function generateToastMsg(msg) {
 	div = document.createElement('div');
@@ -136,8 +90,66 @@ function generateToastMsg(msg) {
 	document.body.appendChild(div);
 }
 
+function updateColorCodeToDom() {}
+
+// Utils
+
 /**
- *
+ * generates and returns an object of three decimal random color code
+ * @returns {object}
+ */
+function generateColorDecimal() {
+	const red = Math.floor(Math.random() * 255);
+	const green = Math.floor(Math.random() * 255);
+	const blue = Math.floor(Math.random() * 255);
+
+	return {
+		red,
+		green,
+		blue,
+	};
+}
+
+/**
+ * takes a color object of three decimal values and returns hex color code
+ * @param {object} color
+ * @returns {string}
+ */
+function generateHexColor({ red, green, blue }) {
+	const getTwoCode = (value) => {
+		const hex = value.toString(16);
+		return hex.length === 1 ? `0${hex}` : hex;
+	};
+	return `#${getTwoCode(red)}${getTwoCode(green)}${getTwoCode(
+		blue
+	)}`.toUpperCase();
+}
+
+/**
+ * takes a color object of three decimal values and returns RGB color code
+ * @param {object} color
+ * @returns {string}
+ */
+function generateRGBColor({ red, green, blue }) {
+	return `rgb(${red}, ${green}, ${blue})`;
+}
+
+/**
+ * converts hex color to rgb
+ * @param {string} hex
+ * @returns {string}
+ */
+
+function hexToRgb(hex) {
+	const red = parseInt(hex.slice(0, 2), 16);
+	const green = parseInt(hex.slice(2, 4), 16);
+	const blue = parseInt(hex.slice(4), 16);
+
+	return `rgb(${red}, ${green}, ${blue})`;
+}
+
+/**
+ * validate hex color code
  * @param {string} color
  */
 function isValidHex(color) {
