@@ -14,6 +14,7 @@ window.onload = () => {
 
 // main or boot function, this function will take care of getting all dom references
 function main() {
+	const colorHexInp = document.getElementById('input-hex');
 	const btnGenerateRandomColor = document.getElementById(
 		'btn-generate-random-color'
 	);
@@ -22,12 +23,25 @@ function main() {
 		'click',
 		handlerBtnGenerateRandomColor
 	);
+
+	colorHexInp.addEventListener('keyup', handlerColorHexInp);
 }
 
 // event handlers
 function handlerBtnGenerateRandomColor() {
 	const color = generateColorDecimal();
 	updateColorCodeToDom(color);
+}
+
+function handlerColorHexInp(e) {
+	const hexColor = e.target.value;
+	if (hexColor) {
+		this.value = hexColor.toUpperCase();
+		if (isValidHex(hexColor)) {
+			const color = hexToDecimalColors(hexColor);
+			updateColorCodeToDom(color);
+		}
+	}
 }
 
 // DOM functions
@@ -57,9 +71,11 @@ function generateToastMsg(msg) {
 function updateColorCodeToDom(color) {
 	const hexColor = generateHexColor(color);
 	const rgbColor = generateRGBColor(color);
-	document.getElementById('color-display').style.backgroundColor = hexColor;
-	document.getElementById('color-mode-hex').value = hexColor;
-	document.getElementById('color-mode-rgb').value = rgbColor;
+	document.getElementById(
+		'color-display'
+	).style.backgroundColor = `#${hexColor}`;
+	document.getElementById('input-hex').value = hexColor;
+	document.getElementById('input-rgb').value = rgbColor;
 	document.getElementById('color-slider-red').value = color.red;
 	document.getElementById('color-slider-red-label').innerText = color.red;
 	document.getElementById('color-slider-green').value = color.green;
@@ -96,7 +112,7 @@ function generateHexColor({ red, green, blue }) {
 		const hex = value.toString(16);
 		return hex.length === 1 ? `0${hex}` : hex;
 	};
-	return `#${getTwoCode(red)}${getTwoCode(green)}${getTwoCode(
+	return `${getTwoCode(red)}${getTwoCode(green)}${getTwoCode(
 		blue
 	)}`.toUpperCase();
 }
