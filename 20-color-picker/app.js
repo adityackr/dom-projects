@@ -6,10 +6,16 @@
 
 // Globals
 let toastContainer = null;
+const defaultColor = {
+	red: 221,
+	green: 222,
+	blue: 238,
+};
 
 // onload function
 window.onload = () => {
 	main();
+	updateColorCodeToDom(defaultColor);
 };
 
 // main or boot function, this function will take care of getting all dom references
@@ -23,7 +29,6 @@ function main() {
 	const colorSliderGreen = document.getElementById('color-slider-green');
 	const colorSliderBlue = document.getElementById('color-slider-blue');
 	const btnCopyToClipboard = document.getElementById('copy-to-clipboard');
-	const colorModeRadios = document.getElementsByName('color-mode');
 
 	// event listeners
 	btnGenerateRandomColor.addEventListener(
@@ -48,19 +53,7 @@ function main() {
 		handleColorSliders(colorSliderRed, colorSliderGreen, colorSliderBlue)
 	);
 
-	btnCopyToClipboard.addEventListener('click', function () {
-		const mode = getCheckedValueFromRadios(colorModeRadios);
-		if (mode === null) {
-			throw new Error('Invalid Radio Input');
-		}
-		if (mode === 'hex') {
-			const hexColor = document.getElementById('input-hex').value;
-			navigator.clipboard.writeText(`#${hexColor}`);
-		} else {
-			const rgbColor = document.getElementById('input-rgb').value;
-			navigator.clipboard.writeText(rgbColor);
-		}
-	});
+	btnCopyToClipboard.addEventListener('click', handleBtnCopyToClipboard);
 }
 
 // event handlers
@@ -92,6 +85,46 @@ function handleColorSliders(colorSliderRed, colorSliderGreen, colorSliderBlue) {
 	};
 }
 
+function handleBtnCopyToClipboard() {
+	const colorModeRadios = document.getElementsByName('color-mode');
+	const mode = getCheckedValueFromRadios(colorModeRadios);
+
+	if (mode === null) {
+		throw new Error('Invalid Radio Input');
+	}
+
+	if (toastContainer !== null) {
+		toastContainer.remove();
+		toastContainer = null;
+	}
+
+	if (mode === 'hex') {
+		const hexColor = document.getElementById('input-hex').value;
+		if (hexColor && isValidHex(hexColor)) {
+			navigator.clipboard.writeText(`#${hexColor}`);
+			generateToastMsg(`#${hexColor} copied!`);
+			setTimeout(() => {
+				toastContainer.remove();
+				toastContainer = null;
+			}, 5000);
+		} else {
+			alert('Invalid Hex Code');
+		}
+	} else {
+		const rgbColor = document.getElementById('input-rgb').value;
+		if (rgbColor) {
+			navigator.clipboard.writeText(rgbColor);
+			generateToastMsg(`${rgbColor} copied`);
+			setTimeout(() => {
+				toastContainer.remove();
+				toastContainer = null;
+			}, 5000);
+		} else {
+			alert('Invalid RGB color');
+		}
+	}
+}
+
 // DOM functions
 
 /**
@@ -113,7 +146,7 @@ function generateToastMsg(msg) {
 		});
 	});
 
-	document.body.appendChild(div);
+	document.body.appendChild(toastContainer);
 }
 
 /**
