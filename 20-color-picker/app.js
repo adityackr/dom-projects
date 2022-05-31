@@ -14,17 +14,35 @@ window.onload = () => {
 
 // main or boot function, this function will take care of getting all dom references
 function main() {
+	// dom references
 	const colorHexInp = document.getElementById('input-hex');
 	const btnGenerateRandomColor = document.getElementById(
 		'btn-generate-random-color'
 	);
+	const colorSliderRed = document.getElementById('color-slider-red');
+	const colorSliderGreen = document.getElementById('color-slider-green');
+	const colorSliderBlue = document.getElementById('color-slider-blue');
 
+	// event listeners
 	btnGenerateRandomColor.addEventListener(
 		'click',
 		handlerBtnGenerateRandomColor
 	);
 
 	colorHexInp.addEventListener('keyup', handlerColorHexInp);
+
+	colorSliderRed.addEventListener(
+		'change',
+		handleColorSliders(colorSliderRed, colorSliderGreen, colorSliderBlue)
+	);
+	colorSliderGreen.addEventListener(
+		'change',
+		handleColorSliders(colorSliderRed, colorSliderGreen, colorSliderBlue)
+	);
+	colorSliderBlue.addEventListener(
+		'change',
+		handleColorSliders(colorSliderRed, colorSliderGreen, colorSliderBlue)
+	);
 }
 
 // event handlers
@@ -42,6 +60,18 @@ function handlerColorHexInp(e) {
 			updateColorCodeToDom(color);
 		}
 	}
+}
+
+function handleColorSliders(colorSliderRed, colorSliderGreen, colorSliderBlue) {
+	return function () {
+		const color = {
+			red: +colorSliderRed.value,
+			green: +colorSliderGreen.value,
+			blue: +colorSliderBlue.value,
+		};
+
+		updateColorCodeToDom(color);
+	};
 }
 
 // DOM functions
