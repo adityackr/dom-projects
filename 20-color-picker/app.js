@@ -11,11 +11,43 @@ const defaultColor = {
 	green: 222,
 	blue: 238,
 };
+const defaultPresetColors = [
+	'#ffcdd2',
+	'#f8bbd0',
+	'#e1bee7',
+	'#ff8a80',
+	'#ff80ab',
+	'#ea80fc',
+	'#b39ddb',
+	'#9fa8da',
+	'#90caf9',
+	'#b388ff',
+	'#8c9eff',
+	'#82b1ff',
+	'#03a9f4',
+	'#00bcd4',
+	'#009688',
+	'#80d8ff',
+	'#84ffff',
+	'#a7ffeb',
+	'#c8e6c9',
+	'#dcedc8',
+	'#f0f4c3',
+	'#b9f6ca',
+	'#ccff90',
+	'#ffcc80',
+];
+const copySound = new Audio('./copy-sound.wav');
 
 // onload function
 window.onload = () => {
 	main();
 	updateColorCodeToDom(defaultColor);
+	// display color boxes
+	displayColorBoxes(
+		document.getElementById('preset-colors'),
+		defaultPresetColors
+	);
 };
 
 // main or boot function, this function will take care of getting all dom references
@@ -29,6 +61,7 @@ function main() {
 	const colorSliderGreen = document.getElementById('color-slider-green');
 	const colorSliderBlue = document.getElementById('color-slider-blue');
 	const btnCopyToClipboard = document.getElementById('copy-to-clipboard');
+	const presetColorParent = document.getElementById('preset-colors');
 
 	// event listeners
 	btnGenerateRandomColor.addEventListener(
@@ -54,6 +87,8 @@ function main() {
 	);
 
 	btnCopyToClipboard.addEventListener('click', handleBtnCopyToClipboard);
+
+	presetColorParent.addEventListener('click', handlePresetColorParent);
 }
 
 // event handlers
@@ -102,11 +137,9 @@ function handleBtnCopyToClipboard() {
 		const hexColor = document.getElementById('input-hex').value;
 		if (hexColor && isValidHex(hexColor)) {
 			navigator.clipboard.writeText(`#${hexColor}`);
+			copySound.volume = 0.2;
+			copySound.play();
 			generateToastMsg(`#${hexColor} copied!`);
-			setTimeout(() => {
-				toastContainer.remove();
-				toastContainer = null;
-			}, 5000);
 		} else {
 			alert('Invalid Hex Code');
 		}
@@ -114,14 +147,28 @@ function handleBtnCopyToClipboard() {
 		const rgbColor = document.getElementById('input-rgb').value;
 		if (rgbColor) {
 			navigator.clipboard.writeText(rgbColor);
+			copySound.volume = 0.2;
+			copySound.play();
 			generateToastMsg(`${rgbColor} copied`);
-			setTimeout(() => {
-				toastContainer.remove();
-				toastContainer = null;
-			}, 5000);
 		} else {
 			alert('Invalid RGB color');
 		}
+	}
+}
+
+function handlePresetColorParent(event) {
+	const child = event.target;
+	if (toastContainer !== null) {
+		toastContainer.remove();
+		toastContainer = null;
+	}
+
+	if (child.className === 'color-box') {
+		const color = child.getAttribute('data-color');
+		navigator.clipboard.writeText(color);
+		copySound.volume = 0.2;
+		copySound.play();
+		generateToastMsg(`${color.toUpperCase()} copied!`);
 	}
 }
 
@@ -147,6 +194,10 @@ function generateToastMsg(msg) {
 	});
 
 	document.body.appendChild(toastContainer);
+	setTimeout(() => {
+		toastContainer.remove();
+		toastContainer = null;
+	}, 3000);
 }
 
 /**
@@ -183,6 +234,32 @@ function updateColorCodeToDom(color) {
 	document.getElementById('color-slider-green-label').innerText = color.green;
 	document.getElementById('color-slider-blue').value = color.blue;
 	document.getElementById('color-slider-blue-label').innerText = color.blue;
+}
+
+/**
+ * create a div element with class name color-box
+ * @param {string} color
+ * @returns {object}
+ */
+function generateColorBox(color) {
+	const div = document.createElement('div');
+	div.className = 'color-box';
+	div.style.backgroundColor = color;
+	div.setAttribute('data-color', color);
+
+	return div;
+}
+
+/**
+ * This function will create and append new color boxes to it's parent
+ * @param {object} parent
+ * @param {Array} colors
+ */
+function displayColorBoxes(parent, colors) {
+	colors.forEach((color) => {
+		const colorBox = generateColorBox(color);
+		parent.appendChild(colorBox);
+	});
 }
 
 // Utils
