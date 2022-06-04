@@ -47,6 +47,11 @@ body {
 	cursor: pointer;
 }
 
+.section-header-action-group {
+	display: flex;
+	gap: 1rem;
+}
+
 .section-title {
 	font-size: 18px;
 	font-weight: 600;
