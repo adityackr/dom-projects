@@ -71,6 +71,9 @@ function main() {
 	const btnSaveToCustom = document.getElementById('save-to-custom');
 	const presetColorParent = document.getElementById('preset-colors');
 	const customColorParent = document.getElementById('custom-colors');
+	const bgFileInput = document.getElementById('bg-file-input');
+	const btnBgFileInput = document.getElementById('bg-file-input-btn');
+	const bgPreview = document.getElementById('bg-preview');
 
 	// event listeners
 	btnGenerateRandomColor.addEventListener(
@@ -105,6 +108,17 @@ function main() {
 	);
 
 	customColorParent.addEventListener('click', handleCustomColorParent);
+
+	btnBgFileInput.addEventListener('click', function () {
+		bgFileInput.click();
+	});
+
+	bgFileInput.addEventListener('change', function (event) {
+		const file = event.target.files[0];
+		const imageUrl = URL.createObjectURL(file);
+		bgPreview.style.background = `url(${imageUrl})`;
+		document.body.style.background = `url(${imageUrl})`;
+	});
 }
 
 // event handlers
@@ -294,7 +308,7 @@ function generateColorBox(color) {
  */
 function displayColorBoxes(parent, colors) {
 	colors.forEach((color) => {
-		if (isValidHex(color.slice(1))) {
+		if (color) {
 			const colorBox = generateColorBox(color);
 			parent.appendChild(colorBox);
 		}
