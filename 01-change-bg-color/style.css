@@ -23,6 +23,45 @@ body {
 	align-items: center;
 }
 
+.label-group {
+	display: flex;
+	justify-content: flex-start;
+	margin-top: 1rem;
+}
+
+.label-group label {
+	color: #fff;
+	text-shadow: 1px 1px 0 #333, -1px -1px 0 #333, 1px -1px 0 #333,
+		-1px 1px 0 #333, 2px 2px 5px rgba(0, 0, 0, 0.65);
+}
+
+.input-group {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	position: relative;
+	/* overflow: hidden; */
+}
+
+.input-icon {
+	position: absolute;
+	top: 1rem;
+	padding: 0.41rem;
+	background-color: #ddd;
+	color: #424242;
+	border-top-left-radius: 0.25rem;
+	border-bottom-left-radius: 0.25rem;
+}
+
+.output {
+	margin-left: 1rem;
+}
+
+.output:focus {
+	outline: none;
+	border: none;
+}
+
 input[type='text'],
 input[type='text']:disabled,
 .btn-copy {
@@ -32,6 +71,9 @@ input[type='text']:disabled,
 	padding: 0.5rem 1rem;
 	border-radius: 0.25rem;
 	margin-top: 1rem;
+}
+
+.btn-copy {
 	cursor: pointer;
 }
 
@@ -59,4 +101,50 @@ h1 {
 	text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
 		1px 1px 0 #fff;
 	text-align: center;
+}
+
+.toast-message {
+	position: fixed;
+	top: 2rem;
+	right: 2rem;
+	background-color: #33cf33;
+	color: #fff;
+	padding: 1rem 2rem;
+	border-radius: 0.25rem;
+	border: 1px solid #fff;
+	cursor: pointer;
+	z-index: 999;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.toast-message-slide-in {
+	animation: toast-animation-in ease-in 0.5s;
+}
+
+.toast-message-slide-out {
+	animation: toast-animation-out ease-in 0.5s;
+}
+
+@keyframes toast-animation-in {
+	from {
+		transform: translateX(200px);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateX(0px);
+		opacity: 1;
+	}
+}
+
+@keyframes toast-animation-out {
+	from {
+		transform: translateX(0px);
+		opacity: 1;
+	}
+
+	to {
+		transform: translateX(200px);
+		opacity: 0;
+	}
 }

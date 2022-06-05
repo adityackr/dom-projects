@@ -11,9 +11,29 @@
 	<body>
 		<div class="container" id="root">
 			<h1>Change The Background Color By Clicking Following Button</h1>
+			<div class="label-group">
+				<label for="output">Hex Code</label>
+			</div>
 			<div class="input-group">
-				<input type="text" disabled value="#000000" id="output" />
+				<div class="input-icon">#</div>
+				<input type="text" value="000000" id="output" class="output" />
 				<button class="btn-copy" id="btn-copy" title="copy to clipboard">
+					Copy
+				</button>
+			</div>
+			<div class="label-group">
+				<label for="output2">RGB Code</label>
+			</div>
+			<div class="input-group">
+				<input
+					type="text"
+					value="rgb(0,0,0)"
+					id="output2"
+					class="output"
+					style="margin-left: -1rem"
+					disabled
+				/>
+				<button class="btn-copy" id="btn-copy-rgb" title="copy to clipboard">
 					Copy
 				</button>
 			</div>
