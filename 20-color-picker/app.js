@@ -55,6 +55,26 @@ window.onload = () => {
 		customColors = JSON.parse(customColorsString);
 		displayColorBoxes(document.getElementById('custom-colors'), customColors);
 	}
+	const bgPropertiesLocalStr = localStorage.getItem('bg-properties');
+	const imageUrlLocal = localStorage.getItem('image-url');
+
+	if (imageUrlLocal) {
+		document.getElementById(
+			'bg-preview'
+		).style.background = `url(${imageUrlLocal})`;
+		document.body.style.background = `url(${imageUrlLocal})`;
+		document.getElementById('bg-file-delete-btn').style.display = 'block';
+		document.getElementById('bg-controller').style.display = 'block';
+	}
+
+	if (bgPropertiesLocalStr) {
+		const bgPropertiesLocal = JSON.parse(bgPropertiesLocalStr);
+		document.body.style.backgroundSize = bgPropertiesLocal['bg-size'];
+		document.body.style.backgroundRepeat = bgPropertiesLocal['bg-repeat'];
+		document.body.style.backgroundPosition = bgPropertiesLocal['bg-position'];
+		document.body.style.backgroundAttachment =
+			bgPropertiesLocal['bg-attachment'];
+	}
 };
 
 // main or boot function, this function will take care of getting all dom references
@@ -248,6 +268,7 @@ function handleBgFileInput(bgPreview, btnBgFileDelete, bgController) {
 	return function (event) {
 		const file = event.target.files[0];
 		const imageUrl = URL.createObjectURL(file);
+		localStorage.setItem('image-url', imageUrl);
 		bgPreview.style.background = `url(${imageUrl})`;
 		document.body.style.background = `url(${imageUrl})`;
 		btnBgFileDelete.style.display = 'block';
@@ -269,6 +290,8 @@ function handleBtnBgFileDelete(
 		btnBgFileDelete.style.display = 'none';
 		bgController.style.display = 'none';
 		bgFileInput.value = null;
+		localStorage.removeItem('image-url');
+		localStorage.removeItem('bg-properties');
 	};
 }
 
@@ -377,13 +400,17 @@ function removeChildren(parent) {
 }
 
 function changeBackgroundPreferences() {
-	document.body.style.backgroundSize = document.getElementById('bg-size').value;
-	document.body.style.backgroundRepeat =
-		document.getElementById('bg-repeat').value;
-	document.body.style.backgroundPosition =
-		document.getElementById('bg-position').value;
-	document.body.style.backgroundAttachment =
-		document.getElementById('bg-attachment').value;
+	const bgProperties = {
+		'bg-size': document.getElementById('bg-size').value,
+		'bg-repeat': document.getElementById('bg-repeat').value,
+		'bg-position': document.getElementById('bg-position').value,
+		'bg-attachment': document.getElementById('bg-attachment').value,
+	};
+	document.body.style.backgroundSize = bgProperties['bg-size'];
+	document.body.style.backgroundRepeat = bgProperties['bg-repeat'];
+	document.body.style.backgroundPosition = bgProperties['bg-position'];
+	document.body.style.backgroundAttachment = bgProperties['bg-attachment'];
+	localStorage.setItem('bg-properties', JSON.stringify(bgProperties));
 }
 
 // Utils
