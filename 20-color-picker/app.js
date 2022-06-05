@@ -37,7 +37,7 @@ const defaultPresetColors = [
 	'#ccff90',
 	'#ffcc80',
 ];
-const customColors = [];
+let customColors = new Array(24);
 const copySound = new Audio('./copy-sound.wav');
 
 // onload function
@@ -49,6 +49,12 @@ window.onload = () => {
 		document.getElementById('preset-colors'),
 		defaultPresetColors
 	);
+
+	const customColorsString = localStorage.getItem('custom-colors');
+	if (customColorsString) {
+		customColors = JSON.parse(customColorsString);
+		displayColorBoxes(document.getElementById('custom-colors'), customColors);
+	}
 };
 
 // main or boot function, this function will take care of getting all dom references
@@ -97,6 +103,8 @@ function main() {
 		'click',
 		handleBtnSaveToCustom(customColorParent, colorHexInp)
 	);
+
+	customColorParent.addEventListener('click', handleCustomColorParent);
 }
 
 // event handlers
@@ -182,10 +190,23 @@ function handlePresetColorParent(event) {
 
 function handleBtnSaveToCustom(customColorParent, inputHex) {
 	return function () {
-		customColors.push(`#${inputHex.value}`);
+		const color = `#${inputHex.value}`;
+		if (customColors.includes(color)) {
+			alert(`${color} is already in your list!`);
+			return;
+		}
+		customColors.unshift(color);
+		if (customColors.length > 24) {
+			customColors = customColors.slice(0, 24);
+		}
+		localStorage.setItem('custom-colors', JSON.stringify(customColors));
 		removeChildren(customColorParent);
 		displayColorBoxes(customColorParent, customColors);
 	};
+}
+
+function handleCustomColorParent(event) {
+	handlePresetColorParent(event);
 }
 
 // DOM functions
@@ -273,8 +294,10 @@ function generateColorBox(color) {
  */
 function displayColorBoxes(parent, colors) {
 	colors.forEach((color) => {
-		const colorBox = generateColorBox(color);
-		parent.appendChild(colorBox);
+		if (isValidHex(color.slice(1))) {
+			const colorBox = generateColorBox(color);
+			parent.appendChild(colorBox);
+		}
 	});
 }
 
