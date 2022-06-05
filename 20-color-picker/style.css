@@ -248,7 +248,8 @@ label {
 	gap: 1rem;
 }
 
-.background-left-panel {
+.background-left-panel,
+.background-right-panel {
 	padding: 1rem;
 	width: 100%;
 }
@@ -279,4 +280,8 @@ label {
 	border: none;
 	outline: none;
 	cursor: pointer;
+}
+
+.select-group {
+	margin-bottom: 1rem;
 }
