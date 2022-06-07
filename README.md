@@ -23,4 +23,4 @@
 | [Random Choice Picker](https://adityackr.github.io/dom-projects/17-random-choice-picker/)         | [Source Code](https://github.com/adityackr/dom-projects/tree/main/17-random-choice-picker)   |
 | [Increment Counter](https://adityackr.github.io/dom-projects/19-incrementing-counter/)            | [Source Code](https://github.com/adityackr/dom-projects/tree/main/19-incrementing-counter)   |
 | [Color Picker](https://adityackr.github.io/dom-projects/20-color-picker/)                         | [Source Code](https://github.com/adityackr/dom-projects/tree/main/20-color-picker)           |
-| [Color Picker](https://adityackr.github.io/dom-projects/21-random-quote-generator/)               | [Source Code](https://github.com/adityackr/dom-projects/tree/main/21-random-quote-generator) |
+| [Random Quote Generator](https://adityackr.github.io/dom-projects/21-random-quote-generator/)     | [Source Code](https://github.com/adityackr/dom-projects/tree/main/21-random-quote-generator) |
