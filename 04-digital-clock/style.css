@@ -1,0 +1,18 @@
+body {
+	color: #fff;
+	background-color: #250606;
+	font-weight: 900;
+	font-family: cursive;
+	height: 100vh;
+}
+
+.section {
+	padding: 15px;
+	max-width: 350px;
+}
+
+.time {
+	font-size: 3rem;
+	font-weight: 900;
+	text-shadow: 0 0 10px #fff, 0 0 20px #e60073, 0 0 30px #e60073;
+}
