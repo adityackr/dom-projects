@@ -4,6 +4,9 @@ let hour = d.toLocaleTimeString().split(':')[0];
 let minutes = d.toLocaleTimeString().split(':')[1];
 let seconds = d.toLocaleTimeString().split(':')[2].split(' ')[0];
 let amPm = d.toLocaleTimeString().split(':')[2].split(' ')[1];
+let day = d.toDateString().split(' ')[0];
+let month = d.toDateString().split(' ')[1];
+let date = d.toDateString().split(' ')[2];
 
 // onload event
 window.onload = () => {
@@ -23,6 +26,9 @@ function setTime() {
 	const domMinutes = document.getElementById('minutes');
 	const domSeconds = document.getElementById('seconds');
 	const domAmPm = document.getElementById('am-pm');
+	const domDay = document.getElementById('day');
+	const domMonth = document.getElementById('month');
+	const domDate = document.getElementById('date');
 
 	domMinutes.innerText = minutes;
 
@@ -64,5 +70,8 @@ function setTime() {
 			hour = 1;
 		}
 		domAmPm.innerText = amPm;
+		domDay.innerText = day;
+		domMonth.innerText = month;
+		domDate.innerText = date;
 	}, 1000);
 }

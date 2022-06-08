@@ -16,3 +16,9 @@ body {
 	font-weight: 900;
 	text-shadow: 0 0 10px #fff, 0 0 20px #e60073, 0 0 30px #e60073;
 }
+
+.date-sec {
+	font-size: 2rem;
+	font-weight: 900;
+	text-shadow: 0 0 10px #fff, 0 0 20px #e60073, 0 0 30px #e60073;
+}
